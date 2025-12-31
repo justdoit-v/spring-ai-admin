@@ -2,7 +2,7 @@ package com.youlai.boot.platform.ai.config;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.chat.client.ChatClient;
-import org.springframework.ai.openai.OpenAiChatModel;
+import org.springframework.ai.ollama.OllamaChatModel;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -27,7 +27,6 @@ import com.youlai.boot.platform.ai.tools.UserTools;
  */
 @Slf4j
 @Configuration
-@ConditionalOnProperty(prefix = "spring.ai.openai.chat", name = "enabled", havingValue = "true", matchIfMissing = false)
 public class SpringAiConfig {
 
     /**
@@ -37,7 +36,7 @@ public class SpringAiConfig {
      * 根据 spring.ai.openai.* 配置自动初始化
      */
     @Bean
-    public ChatClient chatClient(OpenAiChatModel chatModel, UserTools userTools) {
+    public ChatClient chatClient(OllamaChatModel chatModel, UserTools userTools) {
         log.info("✅ Spring AI ChatClient 初始化成功");
         log.info("📋 当前配置 - 模型: {}", chatModel.getDefaultOptions().getModel());
         // 将 UserTools 注册为默认工具，所有调用都可使用

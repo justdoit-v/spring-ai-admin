@@ -53,26 +53,26 @@ spring:
     from: youlaitech@163.com
   #  Spring AI 配置
   ai:
-    openai:
-      # API Key
-      api-key: ${DASHSCOPE_API_KEY:sk-c2941d05bf2f411ca80424fxxxxxxxx}
-
+    ollama:
       # Base URL
-      base-url: https://dashscope.aliyuncs.com/compatible-mode
-
+      base-url: http://localhost:11434
       # Chat 模型配置
       chat:
-        enabled: true
-        options:
-          # 模型名称（qwen-plus、qwen-turbo、qwen-max、qwen-long）
-          model: qwen-plus
+        model: qwen3:8b
+      embedding:
+        model: nomic-embed-text
+    vectorstore:
+      milvus:
+        client:
+          host: localhost
+          port: 19530
+          username: test
+          password: 123456
+        database-name: spring_ai
+        collection-name: vector_store
+        embedding-dimension: 768
+#        auto-id: true
 
-          # Temperature（0.0-1.0，值越高回答越随机）
-          temperature: 0.7
-
-          # JSON 输出格式（确保模型返回合法 JSON）
-          response-format:
-            type: json_object
 
 mybatis-plus:
   mapper-locations: classpath*:/mapper/**/*.xml
@@ -132,19 +132,19 @@ oss:
     # 凭据密钥
     secret-key: minioadmin
     # 存储桶名称
-    bucket-name: youlai
+    bucket-name: spring-ai
     # (可选) 自定义域名：配置后，文件 URL 会使用该域名格式
     custom-domain:
   # 阿里云OSS对象存储服务
-  aliyun:
-    # 服务Endpoint
-    endpoint: oss-cn-hangzhou.aliyuncs.com
-    # 访问凭据`
-    access-key-id: your-access-key-id
-    # 凭据密钥
-    access-key-secret: your-access-key-secret
-    # 存储桶名称
-    bucket-name: default
+#  aliyun:
+#    # 服务Endpoint
+#    endpoint: oss-cn-hangzhou.aliyuncs.com
+#    # 访问凭据`
+#    access-key-id: your-access-key-id
+#    # 凭据密钥
+#    access-key-secret: your-access-key-secret
+#    # 存储桶名称
+#    bucket-name: default
   # 本地存储
   local:
     # 文件存储路径 请注意下，mac用户请使用 /Users/your-username/your-path/，否则会有权限问题，windows用户请使用 D:/your-path/

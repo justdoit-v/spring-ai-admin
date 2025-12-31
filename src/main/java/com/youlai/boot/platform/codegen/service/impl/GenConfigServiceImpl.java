@@ -5,7 +5,7 @@ import cn.hutool.core.lang.Assert;
 import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.youlai.boot.YouLaiBootApplication;
+import com.youlai.boot.SpringAiAdminApplication;
 import com.youlai.boot.common.enums.EnvEnum;
 import com.youlai.boot.platform.codegen.enums.FormTypeEnum;
 import com.youlai.boot.platform.codegen.enums.JavaTypeEnum;
@@ -91,7 +91,7 @@ public class GenConfigServiceImpl extends ServiceImpl<GenConfigMapper, GenConfig
             }
             genConfig.setEntityName(StrUtil.toCamelCase(StrUtil.upperFirst(StrUtil.toCamelCase(processedTable))));
 
-            genConfig.setPackageName(YouLaiBootApplication.class.getPackageName());
+            genConfig.setPackageName(SpringAiAdminApplication.class.getPackageName());
             genConfig.setModuleName(codegenProperties.getDefaultConfig().getModuleName()); // 默认模块名
             genConfig.setAuthor(codegenProperties.getDefaultConfig().getAuthor());
         }

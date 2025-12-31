@@ -1,6 +1,6 @@
 spring:
   application:
-    name: youlai-boot
+    name: spring-ai-admin
   profiles:
     active: local
   config:
@@ -9,6 +9,3 @@ spring:
     multipart:
       max-file-size: 50MB
       max-request-size: 50MB
-# 在 banner.txt 中显示项目版本，使用 @project.version@ 从 pom.xml 获取
-project:
-  version: @project.version@
